@@ -1,14 +1,1 @@
-Hi [Name],
 
-Thank you for raising that concern — you were absolutely right, and we've already addressed it.
-
-The elevation policy has been scoped specifically to COM port properties only and does not grant broad Device Manager access. Here's what was implemented:
-
-- Target process: DeviceProperties.exe (the actual process triggered when clicking 'Change Settings')
-- Parameters restricted to: ACPI\PNP0501 (the universal ACPI hardware ID for native serial COM ports)
-- Parent process locked to: mmc.exe (Device Manager only)
-- Publisher verified as: Microsoft Windows
-
-This means the elevation will only trigger when a user opens properties for a native COM port device. Any other device in Device Manager (network adapters, display, audio, USB, etc.) will not be elevated and will continue to prompt for admin credentials as usual.
-
-Please let me know if you'd like to review the policy configuration or have any further questions
